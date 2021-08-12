@@ -14,6 +14,10 @@ const String appStoreUrl = 'https://apps.apple.com/app/id1579234302';
 const String appShareSubject = 'Please check out this cool app! ';
 const String appSupportUrl = 'https://app.vnappmob.com';
 
+const String apiHost = 'https://vapi.vnappmob.com';
+const String apiKey =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjI0OTI2NjE4MTQsImlhdCI6MTYyODc0ODIxNCwic2NvcGUiOiIqIiwicGVybWlzc2lvbiI6MH0.3h6hiLx36f0jCWAYn5Wu1HERhvTwrHkNUncJa-QQmHo';
+
 const Map<String, String> appLanguageDict = const <String, String>{
   'en': 'English',
   'vi': 'Tiếng Việt'
