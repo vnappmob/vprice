@@ -1,6 +1,8 @@
 library vprice.globals;
 
 import 'package:flutter/material.dart';
+import 'package:vprice/views/exchange_rate_screen/exchange_rate_screen.dart';
+import 'package:vprice/views/gold_screen/gold_screen.dart';
 
 const bool PRODUCTION = bool.fromEnvironment('dart.vm.product');
 
@@ -15,6 +17,19 @@ const String appSupportUrl = 'https://app.vnappmob.com';
 const Map<String, String> appLanguageDict = const <String, String>{
   'en': 'English',
   'vi': 'Tiếng Việt'
+};
+
+final Map<String, dynamic> appHomeScreenDict = {
+  'gold': {
+    'name': 'Gold',
+    'icon': Icons.bar_chart,
+    'widget': GoldScreen(),
+  },
+  'exchange_rate': {
+    'name': 'Exchange rate',
+    'icon': Icons.money,
+    'widget': ExchangeRateScreen(),
+  },
 };
 
 final Map<String, dynamic> appThemeDict = const <String, dynamic>{

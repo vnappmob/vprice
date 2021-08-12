@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vprice/models/app_model.dart';
 import 'package:vprice/views/all_widgets/card_view.dart';
 import 'package:vprice/views/setting_screen/local_widgets/about_view.dart';
+import 'package:vprice/views/setting_screen/local_widgets/language_view.dart';
 import 'package:vprice/views/setting_screen/local_widgets/theme_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,6 +48,13 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: TextStyle(color: textColor),
               ),
               child: ThemeView(),
+            ),
+            CardView(
+              headTitle: Text(
+                AppLocalizations.of(context)!.language,
+                style: TextStyle(color: textColor),
+              ),
+              child: LanguageView(),
             ),
             CardView(
               headTitle: Text(

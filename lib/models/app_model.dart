@@ -25,6 +25,17 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  String _appHomeScreen = 'gold';
+  String get appHomeScreen => _appHomeScreen;
+  Future<void> updateAppHomeScreen(String value) async {
+    _appHomeScreen = value;
+
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setString('appHomeScreen', _appHomeScreen);
+
+    notifyListeners();
+  }
+
   Future<void> fetchSaved() async {
     var prefs = await SharedPreferences.getInstance();
 
@@ -32,5 +43,7 @@ class AppModel extends ChangeNotifier {
     print('---appTutorial: $_appTutorial');
     _appTheme = prefs.getString('appTheme') ?? _appTheme;
     print('---appTheme: $_appTheme');
+    _appHomeScreen = prefs.getString('appHomeScreen') ?? _appHomeScreen;
+    print('---appHomeScreen: _appHomeScreen');
   }
 }
