@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:vprice/globals.dart' as globals;
 import 'package:vprice/models/app_model.dart';
 import 'package:vprice/views/all_widgets/bottom_bar_clipper.dart';
+import 'package:vprice/views/gold_screen/gold_screen.dart';
+import 'package:vprice/views/home_screen/local_widgets/home_menu_view.dart';
 import 'package:vprice/views/iap_screen/iap_screen.dart';
 import 'package:vprice/views/setting_screen/setting_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -61,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     var appTheme = context.select((AppModel _) => _.appTheme);
     var textColor = globals.appThemeDict[appTheme]['text'] ?? Colors.white;
     var appTutorial = context.select((AppModel _) => _.appTutorial);
+
     return Scaffold(
       body: IndexedStack(
         index: appTutorial ? 0 : 1,
@@ -79,6 +82,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           colors: globals.appThemeDict[appTheme]['colors'],
                         ),
                       ),
+                      child: Consumer<AppModel>(
+                        builder: (_, data, __) {
+                          return globals.appHomeScreenDict[data.appHomeScreen]
+                              ['widget'];
+
+                          // return GoldScreen();
+                        },
+                      ),
                     ),
                     Positioned(
                       bottom: bottomSize * 0.53,
@@ -87,9 +98,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                       child: Align(
                         alignment: Alignment.bottomCenter,
                         child: FloatingActionButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HomeMenuView();
+                              },
+                            );
+                          },
                           child: Icon(
-                            Icons.watch_later,
+                            Icons.menu,
                             color: textColor,
                           ),
                           backgroundColor: globals.appThemeDict[appTheme]
@@ -146,21 +164,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                         ),
                       ),
                     ),
-                    SafeArea(
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          margin: EdgeInsets.only(right: 20),
-                          child: Text(
-                            '$batteryLevel%',
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
         ],
