@@ -11,13 +11,13 @@ class PriceView extends StatelessWidget {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white54,
+        color: Colors.white.withOpacity(0.2),
       ),
       child: Text(
-        '${oCcy.format(price)}',
+        price > 0 ? '${oCcy.format(price)}' : '-',
         textAlign: TextAlign.end,
         style: TextStyle(
-          // color: Colors.white,
+          color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),

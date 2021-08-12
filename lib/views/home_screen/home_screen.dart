@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               : Stack(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(bottom: 100),
+                      padding: EdgeInsets.only(bottom: bottomSize),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -86,8 +86,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                         builder: (_, data, __) {
                           return globals.appHomeScreenDict[data.appHomeScreen]
                               ['widget'];
-
-                          // return GoldScreen();
                         },
                       ),
                     ),

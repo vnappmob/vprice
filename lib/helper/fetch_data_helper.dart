@@ -10,6 +10,7 @@ class FetchDataHelper {
   Future<dynamic> fetchData({required String endpoint}) async {
     var url = globals.apiHost + endpoint;
 
+    print(url);
     final response = await http.get(
       Uri.parse(url),
       headers: {
