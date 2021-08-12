@@ -1,0 +1,16 @@
+{
+    "next": "Next",
+    "enter_app": "Enter app",
+    "getting_started": "Getting started",
+    "license": "License",
+    "share_app": "Share app",
+    "feedback": "Feedback",
+    "faq_support": "FAQ & Support",
+    "theme": "Theme",
+    "credit": "Credit",
+    "setting": "Setting",
+    "sponsor": "Sponsor",
+    "consumable_items": "Consumable items",
+    "iap_intro": "App comes with In-App Purchase function for users who would like to share their love with developer team\n\n- Item will be consumed at confirmation of purchase.\n- Privacy policy https://app.vnappmob.com",
+    "@@locale": "en"
+}
