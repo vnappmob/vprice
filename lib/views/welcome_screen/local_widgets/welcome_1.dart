@@ -59,57 +59,6 @@ class _Welcome1State extends State<Welcome1> {
             ),
             Divider(),
             Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                color: Colors.white,
-              ),
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  '',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: CupertinoButton(
-                  padding: EdgeInsets.all(15),
-                  color: globals.appThemeDict[appTheme]['colors'][0],
-                  child: Text(
-                    'System settings',
-                    style: TextStyle(color: textColor),
-                  ),
-                  onPressed: () {
-                    AppSettings.openNotificationSettings();
-                  },
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                color: Colors.white,
-              ),
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  '',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-              ),
-            ),
-            Container(
               padding: EdgeInsets.all(10),
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(
@@ -151,7 +100,7 @@ class _Welcome1State extends State<Welcome1> {
                                 child: FloatingActionButton(
                                   onPressed: () {},
                                   child: Icon(
-                                    Icons.watch_later,
+                                    Icons.menu,
                                     color: textColor,
                                   ),
                                   backgroundColor: globals
@@ -205,23 +154,6 @@ class _Welcome1State extends State<Welcome1> {
                         ],
                       ),
                     ),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                color: Colors.white,
-              ),
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  '',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.blueGrey,
                   ),
                 ),
               ),

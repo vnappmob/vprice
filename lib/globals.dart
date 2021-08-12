@@ -7,10 +7,10 @@ import 'package:vprice/views/gold_screen/gold_screen.dart';
 const bool PRODUCTION = bool.fromEnvironment('dart.vm.product');
 
 const String googlePlayIdentifier = 'com.vnappmob.vprice';
-const String appStoreIdentifier = 'id1579234302';
+const String appStoreIdentifier = 'id1477505685';
 const String googlePlayUrl =
     'https://play.google.com/store/apps/details?id=com.vnappmob.vprice';
-const String appStoreUrl = 'https://apps.apple.com/app/id1579234302';
+const String appStoreUrl = 'https://apps.apple.com/app/id1477505685';
 const String appShareSubject = 'Please check out this cool app! ';
 const String appSupportUrl = 'https://app.vnappmob.com';
 
@@ -37,6 +37,17 @@ final Map<String, dynamic> appHomeScreenDict = {
 };
 
 final Map<String, dynamic> appThemeDict = const <String, dynamic>{
+  'basic': {
+    'name': 'Basic',
+    'colors': [
+      Colors.blue,
+      Colors.indigo,
+    ],
+    'sub_colors': [
+      Colors.blue,
+      Colors.greenAccent,
+    ],
+  },
   'light': {
     'name': 'Light',
     'colors': [
