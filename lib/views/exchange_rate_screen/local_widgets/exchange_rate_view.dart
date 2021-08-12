@@ -39,6 +39,8 @@ class ExchangeRateViewState extends State<ExchangeRateView> {
   Widget build(BuildContext context) {
     var appTheme = context.select((AppModel _) => _.appTheme);
     var textColor = globals.appThemeDict[appTheme]['text'] ?? Colors.white;
+    var backgroundColor = globals.appThemeDict[appTheme]['colors'][0] ??
+        Colors.transparent.withOpacity(0.3);
     return Container(
       padding: EdgeInsets.all(8),
       child: Center(
@@ -51,39 +53,57 @@ class ExchangeRateViewState extends State<ExchangeRateView> {
                 children: List.generate(data!.length, (index) {
                   var item = data[index];
                   return CardView(
-                    colors: [
-                      globals.appThemeDict[appTheme]['colors'][0],
-                      globals.appThemeDict[appTheme]['colors'][0],
-                    ],
-                    headTitle: Text(
-                      item['currency'],
-                      style: TextStyle(
-                        color: textColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                     child: Container(
                       child: Column(
                         children: [
                           Row(
                             children: [
                               Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(3.0),
-                                  child: PriceView(item['buy_cash']),
+                                child: Center(
+                                  child: Text(
+                                    item['currency'],
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
                               Expanded(
+                                flex: 2,
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
-                                  child: PriceView(item['buy_transfer']),
+                                  child: PriceView(
+                                    item['buy_cash'],
+                                    textColor: textColor,
+                                    backgroundColor: backgroundColor,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
                               Expanded(
+                                flex: 2,
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
-                                  child: PriceView(item['sell']),
+                                  child: PriceView(
+                                    item['buy_transfer'],
+                                    textColor: textColor,
+                                    backgroundColor: backgroundColor,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: PriceView(
+                                    item['sell'],
+                                    textColor: textColor,
+                                    backgroundColor: backgroundColor,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
                             ],

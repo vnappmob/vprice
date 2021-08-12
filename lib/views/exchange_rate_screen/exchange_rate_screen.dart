@@ -56,24 +56,63 @@ class ExchangeRateScreen extends StatelessWidget {
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(30.0),
-            child: Row(
-              children: List.generate(methods.length, (index) {
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
                       child: Text(
-                        methods[index],
+                        'Buy cash',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: textColor,
-                          fontSize: 18,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                );
-              }),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        'Buy transfer',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        'Sell',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

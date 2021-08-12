@@ -7,11 +7,12 @@ import 'package:vprice/globals.dart' as globals;
 import 'package:vprice/models/app_model.dart';
 import 'package:vprice/views/all_widgets/card_view.dart';
 import 'package:provider/provider.dart';
+import 'package:vprice/views/iap_screen/local_widgets/iha_view.dart';
 
 const Map<String, dynamic> productDict = {
   'com.vnappmob.vprice.love2': {
     'id': 'com.vnappmob.vprice.love2',
-    'title': 'x 2',
+    'title': 'x 02',
     'description': 'Sponsor 2❤️  to this app'
   },
   'com.vnappmob.vprice.love10': {
@@ -76,7 +77,7 @@ class _IAPScreenState extends State<IAPScreen> {
         if (purchaseDetails.status == PurchaseStatus.error) {
           print(purchaseDetails.error!);
         } else if (purchaseDetails.status == PurchaseStatus.purchased) {
-          print('purchased');
+          print('loved');
         }
 
         if (purchaseDetails.pendingCompletePurchase) {
@@ -142,7 +143,10 @@ class _IAPScreenState extends State<IAPScreen> {
       return CardView(
         child: ListTile(
           leading: CircularProgressIndicator(),
-          title: Text('Fetching products...'),
+          title: Text(
+            'Fetching products...',
+            style: TextStyle(color: textColor),
+          ),
         ),
       );
     }
@@ -163,6 +167,7 @@ class _IAPScreenState extends State<IAPScreen> {
           ListTile(
             leading: Icon(
               Icons.favorite,
+              size: 40,
               color: Colors.pink,
             ),
             title: Text(
@@ -180,25 +185,27 @@ class _IAPScreenState extends State<IAPScreen> {
                 fontSize: 14,
               ),
             ),
-            trailing: TextButton(
-              child: Text(productDetails.price),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.pink,
-                primary: Colors.white,
-              ),
-              onPressed: () {
-                late PurchaseParam purchaseParam;
+            trailing: _purchasePending
+                ? CircularProgressIndicator()
+                : TextButton(
+                    child: Text(productDetails.price),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.pink,
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {
+                      late PurchaseParam purchaseParam;
 
-                purchaseParam = PurchaseParam(
-                  productDetails: productDetails,
-                  applicationUserName: null,
-                );
-                _inAppPurchase.buyConsumable(
-                  purchaseParam: purchaseParam,
-                  autoConsume: true,
-                );
-              },
-            ),
+                      purchaseParam = PurchaseParam(
+                        productDetails: productDetails,
+                        applicationUserName: null,
+                      );
+                      _inAppPurchase.buyConsumable(
+                        purchaseParam: purchaseParam,
+                        autoConsume: true,
+                      );
+                    },
+                  ),
           ),
           lastItem
               ? Container()
@@ -228,12 +235,7 @@ class _IAPScreenState extends State<IAPScreen> {
   Widget build(BuildContext context) {
     var appTheme = context.select((AppModel _) => _.appTheme);
     var textColor = globals.appThemeDict[appTheme]['text'] ?? Colors.white;
-    Widget purchasePending = Container();
-    if (_purchasePending) {
-      purchasePending = Center(
-        child: CircularProgressIndicator(),
-      );
-    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -244,7 +246,7 @@ class _IAPScreenState extends State<IAPScreen> {
         iconTheme: IconThemeData(color: textColor),
       ),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -267,7 +269,7 @@ class _IAPScreenState extends State<IAPScreen> {
               ),
             ),
             _buildProductList(appTheme, textColor),
-            purchasePending,
+            InHouseApp(),
           ],
         ),
       ),
